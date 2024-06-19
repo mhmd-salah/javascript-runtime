@@ -16,16 +16,38 @@ function greet(name, callback) {
   console.log("hi " + name);
   callback();
 }
-greet("mohamed",function(){
-  console.log("hello from callback function")
-})
+greet("mohamed", function () {
+  console.log("hello from callback function");
+});
 
-function start(){
-  console.log("start")
-  end()
+function start() {
+  console.log("start");
+  end();
 }
-function end(){
-  console.log("end")
+function end() {
+  console.log("end");
 }
-start()
+// start();
+
+//////////////////
+
+function first() {
+  console.log("first");
+  second();
+}
+function second() {
+  console.log("second");
+  getPorductsAPI();
+  thrid();
+}
+function thrid() {
+  console.log("thrid");
+}
+function getPorductsAPI() {
+  setTimeout(() => {
+    console.log("Fetching Data ...");
+  }, 2000);
+}
+
+first();
 

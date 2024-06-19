@@ -1,15 +1,11 @@
 // global exquation context
 
-function first(){
-  console.log("first")
-  second()
-}
-function second(){
-  console.log("second")
-  thrid()
-}
-function thrid(){
-  console.log("")
-}
-first()
 
+
+
+
+((name)=>{
+  console.log("hello " + name)
+})("mohamed")
+
+console.log("hello")
