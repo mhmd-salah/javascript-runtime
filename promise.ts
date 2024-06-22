@@ -77,20 +77,22 @@ function getdata(){
 // })
 
 
-function fetchUserID(){
-  console.log("start fetch user ID")
-  return new Promise((res,rej)=>{
-    setTimeout(() => {
-      rej("rejected promise")
-    }, 2000);
-  })
-}
-console.log("before fetch user id")
-fetchUserID().then(
-  (res)=>{
-    console.log(res)
-    console.log(fetchUserID());
-  },
-  (rej)=> console.log(rej)
-)
-console.log("after promise")
+// function fetchUserID(){
+//   console.log("start fetch user ID")
+//   return new Promise((res,rej)=>{
+//     setTimeout(() => {
+//       rej("rejected promise")
+//     }, 2000);
+//   })
+// }
+// console.log("before fetch user id")
+// fetchUserID().then(
+//   (res)=>{
+//     console.log(res)
+//     console.log(fetchUserID());
+//   },
+//   (rej)=> console.log(rej)
+// )
+// console.log("after promise")
+
+console.log("hello")
