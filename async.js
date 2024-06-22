@@ -34,11 +34,17 @@
 
 let list = [];
 
-function getUserID(callback){
-  setTimeout(()=>{
-    console.log("user ID is : 1");
-    callback();
-  },1500)
+function getUsedrID(){
+  console.log("fetch user id ")
+  return new Promise(function(resolve,reject){
+    setTimeout(() => {
+      console.log("fetched user id is : 10")
+      resolve({
+        id:10,
+        username:"salah"
+      })
+    }, 1500);
+  })
 }
 
 function getTodos(callback){
