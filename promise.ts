@@ -95,4 +95,103 @@ function getdata(){
 // )
 // console.log("after promise")
 
-console.log("hello")
+// console.log("hello")
+
+type Tuser = {
+  role: "ADMIN" | "USER";
+  id: number;
+  name: string;
+};
+type TTodo = {
+  id: number;
+  todo: string;
+  userID: number;
+};
+
+function fetchUserId(){
+  console.log("start fetch user id")
+  return new Promise<Tuser>((res,rej)=>{
+    setTimeout(() => {
+      res({
+        role:"ADMIN",
+        id:1,
+        name:"mohamed salah"
+      })
+    }, 2000);
+  })
+}
+
+function success(data: Tuser){
+  console.log("success")
+  if(data.role == "ADMIN"){
+    console.log("Welcome to Admin")
+  }else{
+    console.log("Welcome to User");
+    
+  }
+  console.log(data);
+  
+}
+function error(err: any) {
+  console.log("error");
+  console.log(err);
+}
+
+function topFunc(){
+  console.log("top")
+  return function middle(){
+    console.log("midlle")
+    return function endFunc(){
+      console.log("end")
+    }
+  }
+}
+// topFunc()()
+
+let todoList:TTodo[] = []
+
+function getID(){
+  return new Promise<Tuser>((res,rej)=>{
+    console.log("start")
+    setTimeout(() => {
+      res({
+        role:"USER",
+        id:1,
+        name:"mohamed salah"
+      })
+    }, 2000); 
+    console.log("end");
+    
+  })
+}
+getID().then((user)=>{
+  if(user.role == "ADMIN"){
+    console.log("hello Admin")
+    console.log(user)
+  }else{
+    console.log("you are user sory this data is privte")
+  }
+},
+(rejected)=>console.log(rejected))
+
+function getUserTodos (){
+  console.log("start get uset todos");
+  return new Promise<TTodo[]>((res,rej)=>{
+    setTimeout(() => {
+    todoList = [
+      {
+        id: 1,
+        todo: "learn html",
+        userID: 5,
+      },
+      {
+        id: 2,
+        todo: "learn css",
+        userID: 5,
+      },
+    ];
+    res(todoList)
+    }, 3000);
+  })
+  
+}
