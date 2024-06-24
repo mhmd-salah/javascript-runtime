@@ -23,7 +23,7 @@ function getUserID() {
 
 // getUserID().then(user=> console.log(user , "from promise"));
 
-type user = {id:number,username:string};
+type user = { id: number; username: string };
 
 // function fetchUsetID(){
 //   console.log("start fetch user ID")
@@ -40,7 +40,7 @@ type user = {id:number,username:string};
 // fetchUsetID()
 // console.log("after")
 
-let cor =true;
+let cor = true;
 // let prom = new Promise((res,rej)=>{
 //   setTimeout(() => {
 //     if(cor){
@@ -52,13 +52,13 @@ let cor =true;
 // }).then(respon=> console.log(respon)).catch((err)=>console.log(err))
 
 //functino return promise
-function getdata(){
-  console.log("start get data")
-  return new Promise((res,rej)=>{
+function getdata() {
+  console.log("start get data");
+  return new Promise((res, rej) => {
     setTimeout(() => {
-      res("success!")
+      res("success!");
     }, 1500);
-  })
+  });
 }
 // getdata().then((res)=>res)
 
@@ -75,7 +75,6 @@ function getdata(){
 // ).finally(()=>{
 //   console.log("the program is finshed")
 // })
-
 
 // function fetchUserID(){
 //   console.log("start fetch user ID")
@@ -108,108 +107,122 @@ type TTodo = {
   userID: number;
 };
 
-function fetchUserId(){
-  console.log("start fetch user id")
-  return new Promise<Tuser>((res,rej)=>{
+function fetchUserId() {
+  console.log("start fetch user id");
+  return new Promise<Tuser>((res, rej) => {
     setTimeout(() => {
       res({
-        role:"ADMIN",
-        id:1,
-        name:"mohamed salah"
-      })
+        role: "ADMIN",
+        id: 1,
+        name: "mohamed salah",
+      });
     }, 2000);
-  })
+  });
 }
 
-function success(data: Tuser){
-  console.log("success")
-  if(data.role == "ADMIN"){
-    console.log("Welcome to Admin")
-  }else{
+function success(data: Tuser) {
+  console.log("success");
+  if (data.role == "ADMIN") {
+    console.log("Welcome to Admin");
+  } else {
     console.log("Welcome to User");
-    
   }
   console.log(data);
-  
 }
 function error(err: any) {
   console.log("error");
   console.log(err);
 }
 
-function topFunc(){
-  console.log("top")
-  return function middle(){
-    console.log("midlle")
-    return function endFunc(){
-      console.log("end")
-    }
-  }
+function topFunc() {
+  console.log("top");
+  return function middle() {
+    console.log("midlle");
+    return function endFunc() {
+      console.log("end");
+    };
+  };
 }
 // topFunc()()
 
-let todoList:TTodo[] = []
+let todoList: TTodo[] = [];
 
-function getID(){
-  return new Promise<Tuser>((res,rej)=>{
-    console.log("start")
+function getID() {
+  return new Promise<Tuser>((res, rej) => {
+    console.log("start");
     setTimeout(() => {
       res({
-        role:"USER",
-        id:1,
-        name:"mohamed salah"
-      })
-    }, 2000); 
+        role: "USER",
+        id: 1,
+        name: "mohamed salah",
+      });
+    }, 2000);
     console.log("end");
-    
-  })
+  });
 }
 
-function getUserTodos (){
+function getUserTodos() {
   console.log("start get uset todos");
-  return new Promise<TTodo[]>((res,rej)=>{
+  return new Promise<TTodo[]>((res, rej) => {
     setTimeout(() => {
-    todoList = [
-      {
-        id: 1,
-        todo: "learn html",
-        userID: 5,
-      },
-      {
-        id: 2,
-        todo: "learn css",
-        userID: 5,
-      },
-    ];
-    res(todoList)
+      todoList = [
+        {
+          id: 1,
+          todo: "learn html",
+          userID: 5,
+        },
+        {
+          id: 2,
+          todo: "learn css",
+          userID: 5,
+        },
+      ];
+      res(todoList);
     }, 3000);
-  })
-  
+  });
 }
 type op = {
-  userID:number
-}
+  userID: number;
+};
 let op: op[] = [];
-function FID(){
-  return new Promise<{id:number}>((res,rej)=>{
+function FID() {
+  return new Promise<{ id: number }>((res, rej) => {
     setTimeout(() => {
-      res({id:1})
+      res({ id: 1 });
     }, 2000);
-  })
+  });
 }
-function FUserId(userId:number){
-  return new Promise<op[]>((res,rej)=>{
+function FUserId(userId) {
+  return new Promise<op[]>((res, rej) => {
     setTimeout(() => {
-      res(
-        (op = [
-          {
-            userID: userId,
-          },
-        ])
-      );
-      console.log(op)
+      res(userId);
+      console.log(op);
     }, 2000);
-  })
+  });
 }
 
-FID().then(ID=>FUserId(ID.id))
+let todos:TTodo[] = [];
+function getUsetTodos(uset: Tuser) {
+  return new Promise<TTodo[]>((res, rej) => {
+    setTimeout(() => {
+      let todos = [
+        {
+          id: 1,
+          todo: "Do learn html",
+          userID: 10,
+        },
+        {
+          id: 1,
+          todo: "Do learn html",
+          userID: 11,
+        },
+        {
+          id: 1,
+          todo: "Do learn html",
+          userID: 12,
+        },
+      ];
+      res(todos)
+    }, 3000);
+  });
+}
