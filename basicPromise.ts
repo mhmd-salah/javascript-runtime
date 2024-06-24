@@ -7,14 +7,14 @@
 //   }
 // })
 // console.log(fPromise)
-type TUser = {roal:"USER"|"ADMIN", id: number; username: string };
+type TUser = { roal: "USER" | "ADMIN"; id: number; username: string };
 function getUserID() {
   console.log("fetch user id ");
   return new Promise<TUser>(function (resolve, reject) {
     setTimeout(() => {
       console.log("fetched user id is : 10");
       resolve({
-        roal:"ADMIN",
+        roal: "ADMIN",
         id: 10,
         username: "salah",
       });
@@ -203,7 +203,7 @@ function FID() {
 //   });
 // }
 
-let todos:TTodo[] = [];
+let todos: TTodo[] = [];
 // function getUsetTodos(user: TUser) {
 //   return new Promise<TTodo[]>((res, rej) => {
 //     setTimeout(() => {
@@ -242,42 +242,51 @@ let todos:TTodo[] = [];
 //   username: "mhmd-salah",
 // }).then((user) => getUsetTodos(user));
 
-
-function getTodost(user:TUser){
-  console.log("start get user")
-  return new Promise<TTodo[]>((res,rej)=>{
+function getTodost(user: TUser) {
+  console.log("start get user");
+  return new Promise<TTodo[]>((res, rej) => {
     setTimeout(() => {
       todoList = [
         {
-          id:1,
-          todo:"do something",
-          userID:user.id,
+          id: 1,
+          todo: "do something",
+          userID: user.id,
         },
         {
-          id:2,
-          todo:"do something",
-          userID:user.id,
+          id: 2,
+          todo: "do something",
+          userID: user.id,
         },
         {
-          id:3,
-          todo:"do something",
-          userID:user.id,
+          id: 3,
+          todo: "do something",
+          userID: user.id,
         },
-      ]
-      res(todoList)
-      console.log(todoList[user.id - 1])
+      ];
+      if(user.id>5){
+        rej("unknow")
+      }else{
+        res(todoList);
+      }
+      console.log(todoList[user.id - 1]);
     }, 2000);
-  })
+  });
 }
-function getUser(user:TUser){
-  return new Promise<TUser>((res,rej)=>{
+
+function getUser(user: TUser) {
+  return new Promise<TUser>((res, rej) => {
     setTimeout(() => {
-      res(user)
+      res(user);
     }, 2000);
-  })
+  });
 }
 getUser({
-  roal:"ADMIN",
-  id:2,
-  username:"mohamed salah"
-}).then(us => getTodost(us))
+  roal: "ADMIN",
+  id: 5,
+  username: "mohamed salah",
+}).then((us) => getTodost(us));
+
+
+function h(){
+  console.log("h")
+}
