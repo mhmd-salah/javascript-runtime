@@ -164,15 +164,6 @@ function getID(){
     
   })
 }
-getID().then((user)=>{
-  if(user.role == "ADMIN"){
-    console.log("hello Admin")
-    console.log(user)
-  }else{
-    console.log("you are user sory this data is privte")
-  }
-},
-(rejected)=>console.log(rejected))
 
 function getUserTodos (){
   console.log("start get uset todos");
@@ -195,3 +186,30 @@ function getUserTodos (){
   })
   
 }
+type op = {
+  userID:number
+}
+let op: op[] = [];
+function FID(){
+  return new Promise<{id:number}>((res,rej)=>{
+    setTimeout(() => {
+      res({id:1})
+    }, 2000);
+  })
+}
+function FUserId(userId:number){
+  return new Promise<op[]>((res,rej)=>{
+    setTimeout(() => {
+      res(
+        (op = [
+          {
+            userID: userId,
+          },
+        ])
+      );
+      console.log(op)
+    }, 2000);
+  })
+}
+
+FID().then(ID=>FUserId(ID.id))
