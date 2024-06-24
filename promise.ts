@@ -7,13 +7,14 @@
 //   }
 // })
 // console.log(fPromise)
-type TUser = { id: number; username: string };
+type TUser = {roal:"USER"|"ADMIN", id: number; username: string };
 function getUserID() {
   console.log("fetch user id ");
   return new Promise<TUser>(function (resolve, reject) {
     setTimeout(() => {
       console.log("fetched user id is : 10");
       resolve({
+        roal:"ADMIN",
         id: 10,
         username: "salah",
       });
@@ -161,26 +162,27 @@ function getID() {
   });
 }
 
-function getUserTodos() {
-  console.log("start get uset todos");
-  return new Promise<TTodo[]>((res, rej) => {
-    setTimeout(() => {
-      todoList = [
-        {
-          id: 1,
-          todo: "learn html",
-          userID: 5,
-        },
-        {
-          id: 2,
-          todo: "learn css",
-          userID: 5,
-        },
-      ];
-      res(todoList);
-    }, 3000);
-  });
-}
+// function getUserTodos(user) {
+//   console.log("start get uset todos");
+//   return new Promise<TTodo[]>((res, rej) => {
+//     setTimeout(() => {
+//       todoList = [
+//         {
+//           id: 1,
+//           todo: "learn html",
+//           userID: 5,
+//         },
+//         {
+//           id: 2,
+//           todo: "learn css",
+//           userID: 5,
+//         },
+//       ];
+//       res(todoList);
+//     }, 3000);
+//   });
+// }
+
 type op = {
   userID: number;
 };
@@ -192,37 +194,90 @@ function FID() {
     }, 2000);
   });
 }
-function FUserId(userId) {
-  return new Promise<op[]>((res, rej) => {
-    setTimeout(() => {
-      res(userId);
-      console.log(op);
-    }, 2000);
-  });
-}
+// function FUserId(userId) {
+//   return new Promise<op[]>((res, rej) => {
+//     setTimeout(() => {
+//       res(userId);
+//       console.log(op);
+//     }, 2000);
+//   });
+// }
 
 let todos:TTodo[] = [];
-function getUsetTodos(uset: Tuser) {
-  return new Promise<TTodo[]>((res, rej) => {
+// function getUsetTodos(user: TUser) {
+//   return new Promise<TTodo[]>((res, rej) => {
+//     setTimeout(() => {
+//       let todos = [
+//         {
+//           id: 1,
+//           todo: "Do learn html",
+//           userID: user.id,
+//         },
+//         {
+//           id: 1,
+//           todo: "Do learn html",
+//           userID: user.id,
+//         },
+//         {
+//           id: 1,
+//           todo: "Do learn html",
+//           userID: user.id,
+//         },
+//       ];
+//       res(todos)
+//     }, 3000);
+//   });
+// }
+
+// function fetchUser(user:TUser){
+//   return new Promise<TUser>((res,rej)=>{
+//     setTimeout(() => {
+//       res(user)
+//     }, 3000);
+//   })
+// }
+// fetchUser({
+//   roal: "ADMIN",
+//   id: 10,
+//   username: "mhmd-salah",
+// }).then((user) => getUsetTodos(user));
+
+
+function getTodost(user:TUser){
+  console.log("start get user")
+  return new Promise<TTodo[]>((res,rej)=>{
     setTimeout(() => {
-      let todos = [
+      todoList = [
         {
-          id: 1,
-          todo: "Do learn html",
-          userID: 10,
+          id:1,
+          todo:"do something",
+          userID:user.id,
         },
         {
-          id: 1,
-          todo: "Do learn html",
-          userID: 11,
+          id:2,
+          todo:"do something",
+          userID:user.id,
         },
         {
-          id: 1,
-          todo: "Do learn html",
-          userID: 12,
+          id:3,
+          todo:"do something",
+          userID:user.id,
         },
-      ];
-      res(todos)
-    }, 3000);
-  });
+      ]
+      res(todoList)
+      console.log(todoList[user.id - 1])
+    }, 2000);
+  })
 }
+function getUser(user:TUser){
+  return new Promise<TUser>((res,rej)=>{
+    setTimeout(() => {
+      res(user)
+    }, 2000);
+  })
+}
+getUser({
+  roal:"ADMIN",
+  id:2,
+  username:"mohamed salah"
+}).then(us => getTodost(us))
