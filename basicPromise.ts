@@ -276,17 +276,34 @@ function getTodost(user: TUser) {
 function getUser(user: TUser) {
   return new Promise<TUser>((res, rej) => {
     setTimeout(() => {
-      res(user);
+      if(user.id > 5){
+        rej("unknow")
+      }else{
+        res(user)
+      }
     }, 2000);
   });
 }
-getUser({
-  roal: "ADMIN",
-  id: 5,
-  username: "mohamed salah",
-}).then((us) => getTodost(us));
+// getUser({
+//   roal: "ADMIN",
+//   id: 5,
+//   username: "mohamed salah",
+// }).then((us) => getTodost(us));
 
 
-function h(){
-  console.log("h")
+async function get() {
+  try{
+    const guser = await getUser({roal:"ADMIN",id:6,username:"mhmd"})
+    console.log(guser)
+  }catch(err){
+    console.log(err)
+  }
 }
+get();
+
+
+// self invokin 
+
+(function main(){
+  console.log("this self-invoke function")
+})()

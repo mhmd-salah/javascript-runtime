@@ -1,11 +1,21 @@
-function promRace() {
-  const promOne = new Promise<string>((res, rej) =>
-    setTimeout(res, 60, "resolved promise one")
-  );
-  const promTow = new Promise<string>((res, rej) =>
-    setTimeout(rej, 50, "resolved promise tow")
-  );
-  return Promise.any([promOne, promTow]);
+function syhi(){
+  console.log("first")
+}
+async function midlle() {
+  console.log("mr:")
+  return 1
+}
+function syuser(){
+  console.log("mohamed")
+  return 1;
 }
 
-promRace().then(console.log).catch((console.error))
+syhi()
+midlle()
+syuser()
+
+async function getUserDate(){
+  return "mohamed salah"
+}
+
+// * getUserDate()

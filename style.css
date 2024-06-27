@@ -1,0 +1,12 @@
+
+/* traditional way */
+
+@media(min-width:500px){
+
+}
+
+/* The easy way */
+
+@media (width >= 500px){
+  
+}
